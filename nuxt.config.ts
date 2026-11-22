@@ -23,6 +23,8 @@ export default defineNuxtConfig({
   sitemap: {
     // Prerendered routes are discovered automatically
     exclude: ['/contact/bedankt'],
+    // The XSL viewer needs script/XSLT permissions the strict CSP does not grant
+    xsl: false,
   },
 
   robots: {
@@ -100,6 +102,8 @@ export default defineNuxtConfig({
       htmlAttrs: { lang: 'nl' },
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
+      link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
+      meta: [{ name: 'theme-color', content: '#f7f1e8' }],
     },
   },
 })

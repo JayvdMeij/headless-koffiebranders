@@ -1,0 +1,12 @@
+# Netlify build settings.
+# Security headers and the CSP are written to .output/public/_headers on every
+# build by scripts/security-headers.mjs, because the CSP contains hashes of the
+# inline critical CSS. Missing routes are served 404.html automatically.
+[build]
+  command = "npm run generate"
+  publish = ".output/public"
+
+[build.environment]
+  NODE_VERSION = "22"
+  NUXT_PUBLIC_SANITY_PROJECT_ID = "ns1gemkd"
+  NUXT_PUBLIC_SANITY_DATASET = "production"
