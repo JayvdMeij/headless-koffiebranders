@@ -22,13 +22,13 @@ export default defineNuxtConfig({
 
   sitemap: {
     // Prerendered routes are discovered automatically
-    exclude: ['/contact/bedankt'],
+    exclude: ['/contact/bedankt', '/niet-gevonden'],
     // The XSL viewer needs script/XSLT permissions the strict CSP does not grant
     xsl: false,
   },
 
   robots: {
-    disallow: ['/contact/bedankt'],
+    disallow: ['/contact/bedankt', '/niet-gevonden'],
   },
 
   css: ['~/assets/css/main.css'],
@@ -48,7 +48,7 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: true,
       failOnError: true,
-      routes: ['/', '/contact/bedankt', '/sitemap.xml', '/robots.txt'],
+      routes: ['/', '/contact/bedankt', '/niet-gevonden', '/sitemap.xml', '/robots.txt'],
     },
   },
 
@@ -63,8 +63,11 @@ export default defineNuxtConfig({
   },
 
   // Fonts are downloaded at build time and served from our own domain
-  // (/_fonts), with metric-adjusted fallbacks to avoid layout shift.
+  // (/_nuxt/fonts), with metric-adjusted fallbacks to avoid layout shift.
   fonts: {
+    // Our font stacks live in CSS custom properties; inject the metric-adjusted
+    // fallbacks there too so the swap from fallback to web font does not shift layout
+    processCSSVariables: true,
     defaults: {
       subsets: ['latin'],
       styles: ['normal'],

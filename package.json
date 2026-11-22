@@ -5,25 +5,31 @@
   "scripts": {
     "dev": "nuxt dev",
     "build": "nuxt build",
-    "generate": "nuxt generate && node scripts/security-headers.mjs",
+    "generate": "nuxt generate && node scripts/not-found-page.mjs && node scripts/security-headers.mjs",
     "preview": "node scripts/preview.mjs",
     "postinstall": "nuxt prepare",
     "typecheck": "nuxt typecheck",
     "lint": "eslint .",
-    "typegen": "npm --prefix studio run typegen"
+    "typegen": "npm --prefix studio run typegen",
+    "audit:a11y": "node scripts/a11y.mjs",
+    "audit:lighthouse": "node scripts/lighthouse.mjs"
   },
   "engines": {
     "node": ">=20"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
     "@nuxt/eslint": "^1.17.0",
     "@nuxt/fonts": "^1.2.0",
     "@nuxt/image": "^2.2.1",
     "@nuxtjs/robots": "^6.2.4",
     "@nuxtjs/sitemap": "^8.6.2",
     "@types/node": "^22.20.5",
+    "axe-core": "^4.14.1",
     "eslint": "^10.15.0",
+    "lighthouse": "^13.6.0",
     "nuxt": "^3.21.11",
+    "playwright-core": "^1.65.1",
     "typescript": "~5.9.3",
     "vue-tsc": "^3.3.14"
   },

@@ -43,6 +43,8 @@ const csp = [
   "script-src 'none'",
   `style-src 'self' ${[...styleHashes].sort().join(' ')}`,
   "img-src 'self' https://cdn.sanity.io",
+  // Lets same-origin fetches (e.g. tools reading /robots.txt) work; there is no JS of our own
+  "connect-src 'self'",
   "font-src 'self'",
   "form-action 'self'",
   "frame-ancestors 'none'",

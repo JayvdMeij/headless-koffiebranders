@@ -56,9 +56,9 @@ async function resolveFile(urlPath) {
   return null
 }
 
-const rules = await loadHeaderRules()
-
 createServer(async (req, res) => {
+  // Re-read per request so a fresh `npm run generate` (new CSP hashes) is picked up
+  const rules = await loadHeaderRules()
   const { pathname } = new URL(req.url ?? '/', 'http://localhost')
   const file = await resolveFile(pathname)
   const status = file ? 200 : 404

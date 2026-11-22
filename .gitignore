@@ -12,6 +12,7 @@ dist
 *.log
 .DS_Store
 lighthouse-reports/*.html
+lighthouse-reports/*.json
 studio/node_modules
 studio/dist
 studio/.sanity
