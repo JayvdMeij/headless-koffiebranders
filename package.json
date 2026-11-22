@@ -9,16 +9,27 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "typecheck": "nuxt typecheck",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "typegen": "npm --prefix studio run typegen"
   },
   "engines": {
     "node": ">=20"
   },
   "devDependencies": {
     "@nuxt/eslint": "^1.17.0",
+    "@nuxt/fonts": "^1.2.0",
+    "@nuxt/image": "^2.2.1",
+    "@nuxtjs/robots": "^6.2.4",
+    "@nuxtjs/sitemap": "^8.6.2",
+    "@types/node": "^22.20.5",
     "eslint": "^10.15.0",
     "nuxt": "^3.21.11",
     "typescript": "~5.9.3",
     "vue-tsc": "^3.3.14"
+  },
+  "dependencies": {
+    "@portabletext/vue": "^2.0.0",
+    "@sanity/client": "^8.17.0",
+    "groq": "^6.24.0"
   }
 }
