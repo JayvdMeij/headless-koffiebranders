@@ -356,7 +356,7 @@ export type SETTINGS_QUERY_RESULT = {
 
 // Source: ../queries/index.ts
 // Variable: HOME_QUERY
-// Query: {  "page": *[_type == "homePage" && _id == "homePage"][0]{    hero{ heading, text, ctaLabel, image{   alt,  crop,  hotspot,  "asset": asset->{ _id, "lqip": metadata.lqip, "width": metadata.dimensions.width, "height": metadata.dimensions.height } } },    featuredHeading,    storyHeading,    story[]{   ...,  _type == "imageWithAlt" => { _key, _type,   alt,  crop,  hotspot,  "asset": asset->{ _id, "lqip": metadata.lqip, "width": metadata.dimensions.width, "height": metadata.dimensions.height } } },    storyImage{   alt,  crop,  hotspot,  "asset": asset->{ _id, "lqip": metadata.lqip, "width": metadata.dimensions.width, "height": metadata.dimensions.height } },      seo{ title, description, ogImage{ crop, hotspot, "asset": asset->{ _id } } }  },  "featured": *[_type == "coffee" && featured == true && defined(slug.current)] | order(name asc)[0...3]{   _id,  name,  "slug": slug.current,  excerpt,  origin,  roastLevel,  tastingNotes,  price,  weight,  image{   alt,  crop,  hotspot,  "asset": asset->{ _id, "lqip": metadata.lqip, "width": metadata.dimensions.width, "height": metadata.dimensions.height } } }}
+// Query: {  "page": *[_type == "homePage" && _id == "homePage"][0]{    hero{ heading, text, ctaLabel, image{   alt,  crop,  hotspot,  "asset": asset->{ _id, "width": metadata.dimensions.width, "height": metadata.dimensions.height } } },    featuredHeading,    storyHeading,    story[]{   ...,  _type == "imageWithAlt" => { _key, _type,   alt,  crop,  hotspot,  "asset": asset->{ _id, "width": metadata.dimensions.width, "height": metadata.dimensions.height } } },    storyImage{   alt,  crop,  hotspot,  "asset": asset->{ _id, "width": metadata.dimensions.width, "height": metadata.dimensions.height } },      seo{ title, description, ogImage{ crop, hotspot, "asset": asset->{ _id } } }  },  "featured": *[_type == "coffee" && featured == true && defined(slug.current)] | order(name asc)[0...3]{   _id,  name,  "slug": slug.current,  excerpt,  origin,  roastLevel,  tastingNotes,  price,  weight,  image{   alt,  crop,  hotspot,  "asset": asset->{ _id, "width": metadata.dimensions.width, "height": metadata.dimensions.height } } }}
 export type HOME_QUERY_RESULT = {
   page: {
     hero: {
@@ -369,7 +369,6 @@ export type HOME_QUERY_RESULT = {
         hotspot: SanityImageHotspot | null;
         asset: {
           _id: string;
-          lqip: string | null;
           width: number | null;
           height: number | null;
         } | null;
@@ -401,7 +400,6 @@ export type HOME_QUERY_RESULT = {
           _type: "imageWithAlt";
           asset: {
             _id: string;
-            lqip: string | null;
             width: number | null;
             height: number | null;
           } | null;
@@ -417,7 +415,6 @@ export type HOME_QUERY_RESULT = {
       hotspot: SanityImageHotspot | null;
       asset: {
         _id: string;
-        lqip: string | null;
         width: number | null;
         height: number | null;
       } | null;
@@ -450,7 +447,6 @@ export type HOME_QUERY_RESULT = {
       hotspot: SanityImageHotspot | null;
       asset: {
         _id: string;
-        lqip: string | null;
         width: number | null;
         height: number | null;
       } | null;
@@ -460,7 +456,7 @@ export type HOME_QUERY_RESULT = {
 
 // Source: ../queries/index.ts
 // Variable: ABOUT_QUERY
-// Query: *[_type == "aboutPage" && _id == "aboutPage"][0]{  title,  intro,  image{   alt,  crop,  hotspot,  "asset": asset->{ _id, "lqip": metadata.lqip, "width": metadata.dimensions.width, "height": metadata.dimensions.height } },  body[]{   ...,  _type == "imageWithAlt" => { _key, _type,   alt,  crop,  hotspot,  "asset": asset->{ _id, "lqip": metadata.lqip, "width": metadata.dimensions.width, "height": metadata.dimensions.height } } },    seo{ title, description, ogImage{ crop, hotspot, "asset": asset->{ _id } } }}
+// Query: *[_type == "aboutPage" && _id == "aboutPage"][0]{  title,  intro,  image{   alt,  crop,  hotspot,  "asset": asset->{ _id, "width": metadata.dimensions.width, "height": metadata.dimensions.height } },  body[]{   ...,  _type == "imageWithAlt" => { _key, _type,   alt,  crop,  hotspot,  "asset": asset->{ _id, "width": metadata.dimensions.width, "height": metadata.dimensions.height } } },    seo{ title, description, ogImage{ crop, hotspot, "asset": asset->{ _id } } }}
 export type ABOUT_QUERY_RESULT = {
   title: string;
   intro: string | null;
@@ -470,7 +466,6 @@ export type ABOUT_QUERY_RESULT = {
     hotspot: SanityImageHotspot | null;
     asset: {
       _id: string;
-      lqip: string | null;
       width: number | null;
       height: number | null;
     } | null;
@@ -499,7 +494,6 @@ export type ABOUT_QUERY_RESULT = {
         _type: "imageWithAlt";
         asset: {
           _id: string;
-          lqip: string | null;
           width: number | null;
           height: number | null;
         } | null;
@@ -524,7 +518,7 @@ export type ABOUT_QUERY_RESULT = {
 
 // Source: ../queries/index.ts
 // Variable: COFFEE_INDEX_QUERY
-// Query: {  "page": *[_type == "coffeeIndexPage" && _id == "coffeeIndexPage"][0]{ title, intro,   seo{ title, description, ogImage{ crop, hotspot, "asset": asset->{ _id } } } },  "coffees": *[_type == "coffee" && defined(slug.current)] | order(name asc){   _id,  name,  "slug": slug.current,  excerpt,  origin,  roastLevel,  tastingNotes,  price,  weight,  image{   alt,  crop,  hotspot,  "asset": asset->{ _id, "lqip": metadata.lqip, "width": metadata.dimensions.width, "height": metadata.dimensions.height } } }}
+// Query: {  "page": *[_type == "coffeeIndexPage" && _id == "coffeeIndexPage"][0]{ title, intro,   seo{ title, description, ogImage{ crop, hotspot, "asset": asset->{ _id } } } },  "coffees": *[_type == "coffee" && defined(slug.current)] | order(name asc){   _id,  name,  "slug": slug.current,  excerpt,  origin,  roastLevel,  tastingNotes,  price,  weight,  image{   alt,  crop,  hotspot,  "asset": asset->{ _id, "width": metadata.dimensions.width, "height": metadata.dimensions.height } } }}
 export type COFFEE_INDEX_QUERY_RESULT = {
   page: {
     title: string;
@@ -557,7 +551,6 @@ export type COFFEE_INDEX_QUERY_RESULT = {
       hotspot: SanityImageHotspot | null;
       asset: {
         _id: string;
-        lqip: string | null;
         width: number | null;
         height: number | null;
       } | null;
@@ -567,7 +560,7 @@ export type COFFEE_INDEX_QUERY_RESULT = {
 
 // Source: ../queries/index.ts
 // Variable: COFFEE_QUERY
-// Query: *[_type == "coffee" && slug.current == $slug][0]{    _id,  name,  "slug": slug.current,  excerpt,  origin,  roastLevel,  tastingNotes,  price,  weight,  image{   alt,  crop,  hotspot,  "asset": asset->{ _id, "lqip": metadata.lqip, "width": metadata.dimensions.width, "height": metadata.dimensions.height } },  region,  process,  body[]{   ...,  _type == "imageWithAlt" => { _key, _type,   alt,  crop,  hotspot,  "asset": asset->{ _id, "lqip": metadata.lqip, "width": metadata.dimensions.width, "height": metadata.dimensions.height } } },    seo{ title, description, ogImage{ crop, hotspot, "asset": asset->{ _id } } }}
+// Query: *[_type == "coffee" && slug.current == $slug][0]{    _id,  name,  "slug": slug.current,  excerpt,  origin,  roastLevel,  tastingNotes,  price,  weight,  image{   alt,  crop,  hotspot,  "asset": asset->{ _id, "width": metadata.dimensions.width, "height": metadata.dimensions.height } },  region,  process,  body[]{   ...,  _type == "imageWithAlt" => { _key, _type,   alt,  crop,  hotspot,  "asset": asset->{ _id, "width": metadata.dimensions.width, "height": metadata.dimensions.height } } },    seo{ title, description, ogImage{ crop, hotspot, "asset": asset->{ _id } } }}
 export type COFFEE_QUERY_RESULT = {
   _id: string;
   name: string;
@@ -584,7 +577,6 @@ export type COFFEE_QUERY_RESULT = {
     hotspot: SanityImageHotspot | null;
     asset: {
       _id: string;
-      lqip: string | null;
       width: number | null;
       height: number | null;
     } | null;
@@ -615,7 +607,6 @@ export type COFFEE_QUERY_RESULT = {
         _type: "imageWithAlt";
         asset: {
           _id: string;
-          lqip: string | null;
           width: number | null;
           height: number | null;
         } | null;
@@ -668,10 +659,10 @@ export type CONTACT_QUERY_RESULT = {
 declare global {
   interface SanityQueries {
     '*[_type == "siteSettings" && _id == "siteSettings"][0]{\n  title,\n  tagline,\n  address,\n  email,\n  phone,\n  openingHours[]{ _key, days, hours },\n  socialLinks[]{ _key, label, url },\n  \n  seo{ title, description, ogImage{ crop, hotspot, "asset": asset->{ _id } } }\n\n}': SETTINGS_QUERY_RESULT;
-    '{\n  "page": *[_type == "homePage" && _id == "homePage"][0]{\n    hero{ heading, text, ctaLabel, image{ \n  alt,\n  crop,\n  hotspot,\n  "asset": asset->{ _id, "lqip": metadata.lqip, "width": metadata.dimensions.width, "height": metadata.dimensions.height }\n } },\n    featuredHeading,\n    storyHeading,\n    story[]{ \n  ...,\n  _type == "imageWithAlt" => { _key, _type, \n  alt,\n  crop,\n  hotspot,\n  "asset": asset->{ _id, "lqip": metadata.lqip, "width": metadata.dimensions.width, "height": metadata.dimensions.height }\n }\n },\n    storyImage{ \n  alt,\n  crop,\n  hotspot,\n  "asset": asset->{ _id, "lqip": metadata.lqip, "width": metadata.dimensions.width, "height": metadata.dimensions.height }\n },\n    \n  seo{ title, description, ogImage{ crop, hotspot, "asset": asset->{ _id } } }\n\n  },\n  "featured": *[_type == "coffee" && featured == true && defined(slug.current)] | order(name asc)[0...3]{ \n  _id,\n  name,\n  "slug": slug.current,\n  excerpt,\n  origin,\n  roastLevel,\n  tastingNotes,\n  price,\n  weight,\n  image{ \n  alt,\n  crop,\n  hotspot,\n  "asset": asset->{ _id, "lqip": metadata.lqip, "width": metadata.dimensions.width, "height": metadata.dimensions.height }\n }\n }\n}': HOME_QUERY_RESULT;
-    '*[_type == "aboutPage" && _id == "aboutPage"][0]{\n  title,\n  intro,\n  image{ \n  alt,\n  crop,\n  hotspot,\n  "asset": asset->{ _id, "lqip": metadata.lqip, "width": metadata.dimensions.width, "height": metadata.dimensions.height }\n },\n  body[]{ \n  ...,\n  _type == "imageWithAlt" => { _key, _type, \n  alt,\n  crop,\n  hotspot,\n  "asset": asset->{ _id, "lqip": metadata.lqip, "width": metadata.dimensions.width, "height": metadata.dimensions.height }\n }\n },\n  \n  seo{ title, description, ogImage{ crop, hotspot, "asset": asset->{ _id } } }\n\n}': ABOUT_QUERY_RESULT;
-    '{\n  "page": *[_type == "coffeeIndexPage" && _id == "coffeeIndexPage"][0]{ title, intro, \n  seo{ title, description, ogImage{ crop, hotspot, "asset": asset->{ _id } } }\n },\n  "coffees": *[_type == "coffee" && defined(slug.current)] | order(name asc){ \n  _id,\n  name,\n  "slug": slug.current,\n  excerpt,\n  origin,\n  roastLevel,\n  tastingNotes,\n  price,\n  weight,\n  image{ \n  alt,\n  crop,\n  hotspot,\n  "asset": asset->{ _id, "lqip": metadata.lqip, "width": metadata.dimensions.width, "height": metadata.dimensions.height }\n }\n }\n}': COFFEE_INDEX_QUERY_RESULT;
-    '*[_type == "coffee" && slug.current == $slug][0]{\n  \n  _id,\n  name,\n  "slug": slug.current,\n  excerpt,\n  origin,\n  roastLevel,\n  tastingNotes,\n  price,\n  weight,\n  image{ \n  alt,\n  crop,\n  hotspot,\n  "asset": asset->{ _id, "lqip": metadata.lqip, "width": metadata.dimensions.width, "height": metadata.dimensions.height }\n }\n,\n  region,\n  process,\n  body[]{ \n  ...,\n  _type == "imageWithAlt" => { _key, _type, \n  alt,\n  crop,\n  hotspot,\n  "asset": asset->{ _id, "lqip": metadata.lqip, "width": metadata.dimensions.width, "height": metadata.dimensions.height }\n }\n },\n  \n  seo{ title, description, ogImage{ crop, hotspot, "asset": asset->{ _id } } }\n\n}': COFFEE_QUERY_RESULT;
+    '{\n  "page": *[_type == "homePage" && _id == "homePage"][0]{\n    hero{ heading, text, ctaLabel, image{ \n  alt,\n  crop,\n  hotspot,\n  "asset": asset->{ _id, "width": metadata.dimensions.width, "height": metadata.dimensions.height }\n } },\n    featuredHeading,\n    storyHeading,\n    story[]{ \n  ...,\n  _type == "imageWithAlt" => { _key, _type, \n  alt,\n  crop,\n  hotspot,\n  "asset": asset->{ _id, "width": metadata.dimensions.width, "height": metadata.dimensions.height }\n }\n },\n    storyImage{ \n  alt,\n  crop,\n  hotspot,\n  "asset": asset->{ _id, "width": metadata.dimensions.width, "height": metadata.dimensions.height }\n },\n    \n  seo{ title, description, ogImage{ crop, hotspot, "asset": asset->{ _id } } }\n\n  },\n  "featured": *[_type == "coffee" && featured == true && defined(slug.current)] | order(name asc)[0...3]{ \n  _id,\n  name,\n  "slug": slug.current,\n  excerpt,\n  origin,\n  roastLevel,\n  tastingNotes,\n  price,\n  weight,\n  image{ \n  alt,\n  crop,\n  hotspot,\n  "asset": asset->{ _id, "width": metadata.dimensions.width, "height": metadata.dimensions.height }\n }\n }\n}': HOME_QUERY_RESULT;
+    '*[_type == "aboutPage" && _id == "aboutPage"][0]{\n  title,\n  intro,\n  image{ \n  alt,\n  crop,\n  hotspot,\n  "asset": asset->{ _id, "width": metadata.dimensions.width, "height": metadata.dimensions.height }\n },\n  body[]{ \n  ...,\n  _type == "imageWithAlt" => { _key, _type, \n  alt,\n  crop,\n  hotspot,\n  "asset": asset->{ _id, "width": metadata.dimensions.width, "height": metadata.dimensions.height }\n }\n },\n  \n  seo{ title, description, ogImage{ crop, hotspot, "asset": asset->{ _id } } }\n\n}': ABOUT_QUERY_RESULT;
+    '{\n  "page": *[_type == "coffeeIndexPage" && _id == "coffeeIndexPage"][0]{ title, intro, \n  seo{ title, description, ogImage{ crop, hotspot, "asset": asset->{ _id } } }\n },\n  "coffees": *[_type == "coffee" && defined(slug.current)] | order(name asc){ \n  _id,\n  name,\n  "slug": slug.current,\n  excerpt,\n  origin,\n  roastLevel,\n  tastingNotes,\n  price,\n  weight,\n  image{ \n  alt,\n  crop,\n  hotspot,\n  "asset": asset->{ _id, "width": metadata.dimensions.width, "height": metadata.dimensions.height }\n }\n }\n}': COFFEE_INDEX_QUERY_RESULT;
+    '*[_type == "coffee" && slug.current == $slug][0]{\n  \n  _id,\n  name,\n  "slug": slug.current,\n  excerpt,\n  origin,\n  roastLevel,\n  tastingNotes,\n  price,\n  weight,\n  image{ \n  alt,\n  crop,\n  hotspot,\n  "asset": asset->{ _id, "width": metadata.dimensions.width, "height": metadata.dimensions.height }\n }\n,\n  region,\n  process,\n  body[]{ \n  ...,\n  _type == "imageWithAlt" => { _key, _type, \n  alt,\n  crop,\n  hotspot,\n  "asset": asset->{ _id, "width": metadata.dimensions.width, "height": metadata.dimensions.height }\n }\n },\n  \n  seo{ title, description, ogImage{ crop, hotspot, "asset": asset->{ _id } } }\n\n}': COFFEE_QUERY_RESULT;
     '*[_type == "coffee" && defined(slug.current)].slug.current': COFFEE_SLUGS_QUERY_RESULT;
     '*[_type == "contactPage" && _id == "contactPage"][0]{\n  title,\n  intro,\n  successTitle,\n  successMessage,\n  \n  seo{ title, description, ogImage{ crop, hotspot, "asset": asset->{ _id } } }\n\n}': CONTACT_QUERY_RESULT;
   }

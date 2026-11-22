@@ -1,12 +1,12 @@
 // Shared GROQ projections. Kept as plain strings so they can be interpolated
 // into defineQuery() calls; TypeGen resolves the final query strings.
 
-/** Image with alt text plus the asset data needed for sizing and LQIP. */
+/** Image with alt text plus the asset data needed for intrinsic sizing (prevents layout shift). */
 export const imageFields = /* groq */ `
   alt,
   crop,
   hotspot,
-  "asset": asset->{ _id, "lqip": metadata.lqip, "width": metadata.dimensions.width, "height": metadata.dimensions.height }
+  "asset": asset->{ _id, "width": metadata.dimensions.width, "height": metadata.dimensions.height }
 `
 
 export const seoFields = /* groq */ `
