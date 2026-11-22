@@ -9,7 +9,23 @@ const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'https://spaarne-koffiebrand
 export default defineNuxtConfig({
   compatibilityDate: '2026-11-01',
   devtools: { enabled: true },
-  modules: ['@nuxt/eslint', '@nuxt/image', '@nuxt/fonts'],
+  modules: ['@nuxt/eslint', '@nuxt/image', '@nuxt/fonts', '@nuxtjs/robots', '@nuxtjs/sitemap'],
+
+  // Shared by the sitemap and robots modules
+  site: {
+    url: siteUrl,
+    name: 'Spaarne Koffiebranders',
+    defaultLocale: 'nl',
+  },
+
+  sitemap: {
+    // Prerendered routes are discovered automatically
+    exclude: ['/contact/bedankt'],
+  },
+
+  robots: {
+    disallow: ['/contact/bedankt'],
+  },
 
   css: ['~/assets/css/main.css'],
 

@@ -2,6 +2,13 @@
 import { ABOUT_QUERY } from '~/queries'
 
 const page = await useSanityQuery('about', ABOUT_QUERY)
+
+await usePageSeo({
+  title: page.value.title,
+  description: page.value.intro,
+  seo: page.value.seo,
+  imageId: page.value.image?.asset?._id,
+})
 </script>
 
 <template>

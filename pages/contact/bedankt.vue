@@ -2,6 +2,8 @@
 import { CONTACT_QUERY } from '~/queries'
 
 const page = await useSanityQuery('contact', CONTACT_QUERY)
+
+await usePageSeo({ title: page.value.successTitle || 'Bedankt', noindex: true })
 </script>
 
 <template>

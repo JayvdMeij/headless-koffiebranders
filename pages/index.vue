@@ -6,6 +6,14 @@ const page = computed(() => data.value.page)
 if (!page.value) {
   throw createError({ statusCode: 404, statusMessage: 'Pagina niet gevonden', fatal: true })
 }
+
+const { settings, url } = await usePageSeo({
+  title: page.value.seo?.title || page.value.hero.heading,
+  description: page.value.hero.text,
+  seo: page.value.seo,
+  imageId: page.value.hero.image.asset?._id,
+})
+useJsonLd(localBusinessSchema(settings.value, url, useImage()))
 </script>
 
 <template>

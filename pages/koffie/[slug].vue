@@ -5,6 +5,43 @@ const route = useRoute()
 const slug = String(route.params.slug)
 const coffee = await useSanityQuery(`coffee-${slug}`, COFFEE_QUERY, { slug })
 
+const { url, siteName } = await usePageSeo({
+  title: coffee.value.name,
+  description: coffee.value.excerpt,
+  seo: coffee.value.seo,
+  imageId: coffee.value.image.asset?._id,
+})
+const { siteUrl } = useRuntimeConfig().public
+const img = useImage()
+const imageId = coffee.value.image.asset?._id
+
+useJsonLd({
+  '@graph': [
+    {
+      '@type': 'Product',
+      name: coffee.value.name,
+      description: coffee.value.excerpt,
+      url,
+      image: imageId ? croppedImageUrl(img, imageId, 1200, 1200) : undefined,
+      brand: { '@type': 'Brand', name: siteName },
+      countryOfOrigin: coffee.value.origin,
+      weight: { '@type': 'QuantitativeValue', value: coffee.value.weight, unitCode: 'GRM' },
+      offers: {
+        '@type': 'Offer',
+        price: coffee.value.price.toFixed(2),
+        priceCurrency: 'EUR',
+        availability: 'https://schema.org/InStoreOnly',
+        url,
+      },
+    },
+    breadcrumbSchema([
+      { name: 'Home', url: siteUrl },
+      { name: 'Koffie', url: `${siteUrl}/koffie` },
+      { name: coffee.value.name, url },
+    ]),
+  ],
+})
+
 const facts = computed(() =>
   [
     { label: 'Herkomst', value: coffee.value.origin },

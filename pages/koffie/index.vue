@@ -1,11 +1,26 @@
 <script setup lang="ts">
 import { COFFEE_INDEX_QUERY } from '~/queries'
+import type { COFFEE_INDEX_QUERY_RESULT } from '~/types/sanity.types'
+
+type Coffee = COFFEE_INDEX_QUERY_RESULT['coffees'][number]
 
 const data = await useSanityQuery('coffee-index', COFFEE_INDEX_QUERY)
 const page = computed(() => data.value.page)
 if (!page.value) {
   throw createError({ statusCode: 404, statusMessage: 'Pagina niet gevonden', fatal: true })
 }
+
+const { url } = await usePageSeo({ title: page.value.title, description: page.value.intro, seo: page.value.seo })
+useJsonLd({
+  '@type': 'ItemList',
+  name: page.value.title,
+  itemListElement: data.value.coffees.map((coffee: Coffee, index: number) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    url: `${url}/${coffee.slug}`,
+    name: coffee.name,
+  })),
+})
 </script>
 
 <template>

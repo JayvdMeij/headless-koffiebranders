@@ -6,6 +6,10 @@ const [page, settings] = await Promise.all([
   useSanityQuery('settings', SETTINGS_QUERY),
 ])
 
+const { siteUrl } = useRuntimeConfig().public
+await usePageSeo({ title: page.value.title, description: page.value.intro, seo: page.value.seo })
+useJsonLd(localBusinessSchema(settings.value, siteUrl, useImage()))
+
 const mapUrl = computed(() => {
   const a = settings.value.address
   if (!a) return undefined
