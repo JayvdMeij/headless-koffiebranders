@@ -7,6 +7,7 @@
     "build": "sanity build",
     "deploy": "sanity deploy",
     "typecheck": "tsc -p .",
+    "seed": "node seed/build-seed.mjs && sanity dataset import seed/production.ndjson production --missing",
     "typegen": "sanity schema extract --force --enforce-required-fields && sanity typegen generate"
   },
   "dependencies": {
