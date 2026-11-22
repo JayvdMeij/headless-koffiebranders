@@ -112,7 +112,7 @@ To deploy the Studio to `spaarne-koffiebranders.sanity.studio`, run `npm run dep
 | --- | --- | --- |
 | `NUXT_PUBLIC_SANITY_PROJECT_ID` | `ns1gemkd` | Sanity project |
 | `NUXT_PUBLIC_SANITY_DATASET` | `production` | Sanity dataset (public, read-only) |
-| `NUXT_PUBLIC_SITE_URL` | `https://spaarne-koffiebranders.netlify.app` | Canonical URLs, Open Graph, sitemap |
+| `NUXT_PUBLIC_SITE_URL` | `https://koffiebrander.netlify.app` | Canonical URLs, Open Graph, sitemap |
 
 No secrets are needed: the site only reads published content from a public dataset.
 

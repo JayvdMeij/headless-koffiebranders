@@ -6,7 +6,7 @@ const sanity = {
   dataset: process.env.NUXT_PUBLIC_SANITY_DATASET || 'production',
   apiVersion: '2025-02-19',
 }
-const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'https://spaarne-koffiebranders.netlify.app'
+const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'https://koffiebrander.netlify.app'
 
 export default defineNuxtConfig({
   compatibilityDate: '2026-11-01',
@@ -45,6 +45,10 @@ export default defineNuxtConfig({
   },
 
   nitro: {
+    // Pin the preset: on Netlify, Nitro would auto-select `netlify-static`,
+    // which writes to dist/ instead of .output/public. Headers are generated
+    // by scripts/security-headers.mjs, so the Netlify preset adds nothing.
+    preset: 'static',
     prerender: {
       crawlLinks: true,
       failOnError: true,
