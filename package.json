@@ -1,0 +1,24 @@
+{
+  "name": "spaarne-koffiebranders",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "typecheck": "nuxt typecheck",
+    "lint": "eslint ."
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@nuxt/eslint": "^1.17.0",
+    "eslint": "^10.15.0",
+    "nuxt": "^3.21.11",
+    "typescript": "~5.9.3",
+    "vue-tsc": "^3.3.14"
+  }
+}
