@@ -68,7 +68,7 @@ const facts = computed(() =>
         <SanityImage
           :image="coffee.image"
           :aspect-ratio="4 / 5"
-          sizes="100vw md:50vw xl:560px"
+          sizes="(min-width: 72rem) 520px, (min-width: 48rem) calc(50vw - 56px), calc(100vw - 32px)"
           priority
           class="coffee__image"
         />

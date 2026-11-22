@@ -11,7 +11,7 @@ const isExternal = (href: string) => /^https?:\/\//.test(href)
 const components: PortableTextComponents = {
   types: {
     imageWithAlt: ({ value }: { value: SanityImageValue }) =>
-      h('figure', { class: 'rich-text__figure' }, [h(SanityImage, { image: value, sizes: '100vw md:768px' })]),
+      h('figure', { class: 'rich-text__figure' }, [h(SanityImage, { image: value, sizes: '(min-width: 42rem) 640px, calc(100vw - 32px)' })]),
   },
   marks: {
     link: ({ value }: { value?: { href?: string } }, { slots }) => {

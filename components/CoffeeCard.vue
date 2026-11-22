@@ -17,7 +17,7 @@ const price = computed(() => formatPrice(props.coffee.price))
     <SanityImage
       :image="coffee.image"
       :aspect-ratio="4 / 3"
-      sizes="100vw sm:50vw lg:400px"
+      sizes="(min-width: 72rem) 352px, (min-width: 60rem) calc(33vw - 32px), (min-width: 40rem) calc(50vw - 36px), calc(100vw - 32px)"
       class="coffee-card__image"
     />
     <div class="coffee-card__body">

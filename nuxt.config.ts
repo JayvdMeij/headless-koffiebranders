@@ -1,4 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { createClient } from '@sanity/client'
+
 const sanity = {
   projectId: process.env.NUXT_PUBLIC_SANITY_PROJECT_ID || 'ns1gemkd',
   dataset: process.env.NUXT_PUBLIC_SANITY_DATASET || 'production',
@@ -28,6 +30,35 @@ export default defineNuxtConfig({
   },
 
   css: ['~/assets/css/main.css'],
+
+  // Content site without client-side interactivity: ship zero JavaScript.
+  // Navigation, the mobile layout and the Netlify form all work natively.
+  features: {
+    noScripts: true,
+    inlineStyles: true,
+  },
+
+  experimental: {
+    payloadExtraction: false,
+  },
+
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      failOnError: true,
+      routes: ['/', '/contact/bedankt', '/sitemap.xml', '/robots.txt'],
+    },
+  },
+
+  hooks: {
+    // Prerender every coffee detail page, also ones not linked from other pages
+    async 'nitro:config'(nitroConfig) {
+      const client = createClient({ ...sanity, useCdn: false, perspective: 'published' })
+      const slugs = await client.fetch<string[]>(`*[_type == "coffee" && defined(slug.current)].slug.current`)
+      nitroConfig.prerender ??= {}
+      nitroConfig.prerender.routes = [...(nitroConfig.prerender.routes ?? []), ...slugs.map((slug) => `/koffie/${slug}`)]
+    },
+  },
 
   // Fonts are downloaded at build time and served from our own domain
   // (/_fonts), with metric-adjusted fallbacks to avoid layout shift.

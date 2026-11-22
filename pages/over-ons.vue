@@ -22,7 +22,7 @@ await usePageSeo({
         v-if="page.image"
         :image="page.image"
         :aspect-ratio="16 / 9"
-        sizes="100vw xl:1152px"
+        sizes="(min-width: 72rem) 1104px, calc(100vw - 32px)"
         priority
         class="about__image"
       />

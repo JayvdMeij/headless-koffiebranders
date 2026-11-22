@@ -28,7 +28,7 @@ useJsonLd(localBusinessSchema(settings.value, url, useImage()))
         <SanityImage
           :image="page.hero.image"
           :aspect-ratio="4 / 5"
-          sizes="100vw md:50vw xl:600px"
+          sizes="(min-width: 72rem) 520px, (min-width: 48rem) calc(50vw - 56px), calc(100vw - 32px)"
           priority
           class="hero__image"
         />
@@ -55,7 +55,7 @@ useJsonLd(localBusinessSchema(settings.value, url, useImage()))
           v-if="page.storyImage"
           :image="page.storyImage"
           :aspect-ratio="1"
-          sizes="100vw md:50vw xl:560px"
+          sizes="(min-width: 72rem) 520px, (min-width: 48rem) calc(50vw - 56px), calc(100vw - 32px)"
           class="story__image"
         />
         <div>
