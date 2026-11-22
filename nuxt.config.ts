@@ -9,7 +9,23 @@ const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'https://spaarne-koffiebrand
 export default defineNuxtConfig({
   compatibilityDate: '2026-11-01',
   devtools: { enabled: true },
-  modules: ['@nuxt/eslint', '@nuxt/image'],
+  modules: ['@nuxt/eslint', '@nuxt/image', '@nuxt/fonts'],
+
+  css: ['~/assets/css/main.css'],
+
+  // Fonts are downloaded at build time and served from our own domain
+  // (/_fonts), with metric-adjusted fallbacks to avoid layout shift.
+  fonts: {
+    defaults: {
+      subsets: ['latin'],
+      styles: ['normal'],
+      formats: ['woff2'],
+    },
+    families: [
+      { name: 'Inter', provider: 'google', weights: [400, 600], global: true, preload: { weights: [400] } },
+      { name: 'Fraunces', provider: 'google', weights: [600], global: true, preload: true },
+    ],
+  },
 
   runtimeConfig: {
     public: {
